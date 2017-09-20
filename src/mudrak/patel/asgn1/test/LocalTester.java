@@ -1,11 +1,11 @@
-package paula.mcm.asgn1.test;
+package mudrak.patel.asgn1.test;
 
 import java.util.Collection;
 
-import paula.mcm.asgn1.data.CourseCatalog;
-import paula.mcm.asgn1.data.CourseManager;
-import student.name.asgn1.dto.Course;
-import student.name.asgn1.dto.Professor;
+import mudrak.patel.asgn1.data.CourseCatalog;
+import mudrak.patel.asgn1.data.CourseManager;
+import mudrak.patel.asgn1.dto.Course;
+import mudrak.patel.asgn1.dto.Professor;
 
 public class LocalTester {
 
@@ -66,15 +66,13 @@ public class LocalTester {
 		System.out.println("Testing adding a course");
 		try {
 			System.out.println("Adding TEST 1234");
-			System.out.println(cc.addCourse(new Course("TEST 1234",
-					"SQA and Testing")));
+			System.out.println(cc.addCourse(new Course("TEST 1234", "SQA and Testing")));
 		} catch (Exception e) {
 			System.out.println(e.getClass().getName() + ": " + e.getMessage());
 		}
 		try {
 			System.out.println("Adding TEST 1234 again");
-			System.out.println(cc.addCourse(new Course("TEST 1234",
-					"Second Testing Course")));
+			System.out.println(cc.addCourse(new Course("TEST 1234", "Second Testing Course")));
 		} catch (Exception e) {
 			System.out.println(e.getClass().getName() + ": " + e.getMessage());
 		}
@@ -101,7 +99,7 @@ public class LocalTester {
 			Course course = cc.getCourse("TEST 1234");
 			System.out.println("Updating course TEST 1234");
 			// insert your details in the next line - you teach MISC101
-			course.setProfessor(new Professor( "Your", "Own", "Name") );
+			course.setProfessor(new Professor( "Mudrak", "B.", "Patel") );
 			// Set a title of your choice
 			course.setCourseTitle("What would you teach?");
 			course = cc.updateCourse(course);
@@ -110,8 +108,7 @@ public class LocalTester {
 			System.out.println(e.getClass().getName() + ": " + e.getMessage());
 		}
 		try {
-			System.out
-					.println("Updating a course that does not exist: HIST 800");
+			System.out.println("Updating a course that does not exist: HIST 800");
 			Course course = new Course("HIST 800", "History of the World");
 			cc.updateCourse(course);
 		} catch (Exception e) {

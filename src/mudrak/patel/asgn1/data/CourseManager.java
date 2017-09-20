@@ -1,12 +1,12 @@
-package paula.mcm.asgn1.data;
+package mudrak.patel.asgn1.data;
 
 import java.util.Collection;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import student.name.asgn1.dto.Course;
-import student.name.asgn1.exceptions.CourseNotFoundException;
-import student.name.asgn1.exceptions.DuplicateCourseException;
+import mudrak.patel.asgn1.dto.Course;
+import mudrak.patel.asgn1.exceptions.CourseNotFoundException;
+import mudrak.patel.asgn1.exceptions.DuplicateCourseException;
 
 
 public class CourseManager implements CourseCatalog {
@@ -41,32 +41,32 @@ public class CourseManager implements CourseCatalog {
 	}
 
 	@Override
-	public Course addCourse(Course c) throws DuplicateCourseException {
-		if ( c == null ) {
+	public Course addCourse(Course course) throws DuplicateCourseException {
+		if ( course == null ) {
 			throw new DuplicateCourseException("Cannot add a null Course");
 		}
-		String code = c.getCourseCode();
+		String code = course.getCourseCode();
 		if (courses.containsKey(code) ){
 			throw new DuplicateCourseException("Duplicate course code " + code );
 		}
-		courses.put(code, c);
-		return c;
+		courses.put(code, course);
+		return course;
 	}
 
 	@Override
-	public Course updateCourse(Course c) throws CourseNotFoundException {
-		if ( c == null ) {
+	public Course updateCourse(Course course) throws CourseNotFoundException {
+		if ( course == null ) {
 			throw new CourseNotFoundException("Cannot update a null Course");
 		}
-		Course oldC = getCourse(c.getCourseCode());
-		if ( c.equals(oldC)) {
+		Course oldC = getCourse(course.getCourseCode());
+		if ( course.equals(oldC)) {
 			// no change - nothing to do
-			return c;
+			return course;
 		}
 		// insert changed course
-		courses.put(c.getCourseCode(), c);
+		courses.put(course.getCourseCode(), course);
 		// retrieve again to get derived fields, if there are any
-		return getCourse(c.getCourseCode());
+		return getCourse(course.getCourseCode());
 	}
 
 	@Override
